@@ -1,5 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Instrument+Sans:wght@400;500;600&display=swap");
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Instrument+Sans:wght@400;500;600&display=swap');
+@import 'tailwindcss';
 
 @theme {
   --color-stone-50: #fafaf9;
@@ -16,8 +16,8 @@
   --color-warm: #c8b89a;
   --color-warm-light: #ddd0b8;
   --color-warm-dim: rgba(200, 184, 154, 0.12);
-  --font-display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
-  --font-body: "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --font-body: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif;
 }
 
 * {
@@ -40,7 +40,7 @@ body {
 
 /* Noise texture overlay */
 body::after {
-  content: "";
+  content: '';
   position: fixed;
   inset: 0;
   pointer-events: none;
@@ -53,14 +53,18 @@ body::after {
 
 /* Ambient warm glow */
 body::before {
-  content: "";
+  content: '';
   position: fixed;
   top: -30%;
   right: -10%;
   width: 60vw;
   height: 60vw;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(200, 184, 154, 0.04), transparent 70%);
+  background: radial-gradient(
+    circle,
+    rgba(200, 184, 154, 0.04),
+    transparent 70%
+  );
   pointer-events: none;
   z-index: 0;
 }
@@ -83,7 +87,12 @@ body::before {
 /* Hairline separator */
 .hairline {
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--color-stone-700), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-stone-700),
+    transparent
+  );
 }
 
 /* Photo placeholder inner glow */

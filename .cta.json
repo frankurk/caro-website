@@ -11,9 +11,5 @@
   "routerOnly": false,
   "version": 1,
   "framework": "react",
-  "chosenAddOns": [
-    "eslint",
-    "compiler",
-    "paraglide"
-  ]
+  "chosenAddOns": ["eslint", "compiler", "paraglide"]
 }
