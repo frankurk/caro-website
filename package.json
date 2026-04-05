@@ -27,7 +27,6 @@
     "tailwindcss": "^4.2.2"
   },
   "devDependencies": {
-    "@inlang/paraglide-js": "^2.15.1",
     "@tailwindcss/typography": "^0.5.19",
     "@tanstack/devtools-vite": "latest",
     "@tanstack/eslint-config": "latest",

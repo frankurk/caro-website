@@ -1,77 +1,100 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute, redirect } from '@tanstack/react-router'
+import type { Locale } from '#/i18n'
+import { locales, t } from '#/i18n'
+import { setPrerenderLocale } from '#/routes/__root'
+import LocaleSwitcher from '#/components/LocaleSwitcher'
 
-export const Route = createFileRoute('/')({ component: Portfolio })
+export const Route = createFileRoute('/{-$locale}/')({
+  beforeLoad: ({ params }) => {
+    const locale = (params.locale || 'en') as Locale
+    if (!locales.includes(locale)) {
+      throw redirect({ href: '/', replace: true })
+    }
+    setPrerenderLocale(locale)
+    return { locale }
+  },
+  head: ({ params }) => {
+    const locale = (params.locale || 'en') as Locale
+    const tr = t(locale)
+    return {
+      meta: [
+        { charSet: 'utf-8' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        { title: `${tr.heroName} — Portfolio` },
+        { name: 'description', content: tr.heroDescription.slice(0, 150) },
+      ],
+      htmlAttrs: { lang: locale },
+      links: [],
+    }
+  },
+  component: Portfolio,
+})
 
 function Portfolio() {
+  const { locale } = Route.useRouteContext()
+  const tr = t(locale)
+
   return (
     <div className="relative min-h-screen">
       {/* Ambient glow */}
       <div className="pointer-events-none fixed -right-32 -top-32 h-[50vw] w-[50vw] rounded-full bg-[radial-gradient(circle,rgba(200,184,154,0.035),transparent_70%)]" />
 
+      {/* Locale Switcher — top right */}
+      <div className="fixed right-6 top-5 z-50 sm:right-10">
+        <LocaleSwitcher />
+      </div>
+
       <main className="relative mx-auto max-w-2xl px-6 py-20 sm:px-10 sm:py-32 lg:py-40">
         {/* Hero */}
         <section className="reveal">
-          {/* Photo */}
           <div className="mb-14 flex justify-center sm:mb-16 sm:justify-start">
             <div className="photo-glow relative h-52 w-52 overflow-hidden rounded-sm sm:h-64 sm:w-64">
               <div className="flex h-full w-full items-center justify-center bg-stone-900 text-[11px] tracking-[0.25em] text-stone-600 uppercase">
-                Photo
+                {tr.photoPlaceholder}
               </div>
             </div>
           </div>
 
-          {/* Name & Occupation */}
           <div className="mb-10">
             <p
               className="mb-4 text-[10px] tracking-[0.35em] text-stone-500 uppercase"
               style={{ animationDelay: '100ms' }}
             >
-              Portfolio
+              {tr.portfolioLabel}
             </p>
             <h1
               className="font-display text-5xl font-light leading-[1.05] tracking-tight text-stone-100 sm:text-7xl"
               style={{ animationDelay: '200ms' }}
             >
-              Your Name
+              {tr.heroName}
             </h1>
             <p
               className="mt-3 text-base font-medium text-warm"
               style={{ animationDelay: '300ms' }}
             >
-              Your Occupation — e.g. Creative Developer
+              {tr.heroOccupation}
             </p>
           </div>
 
-          {/* Description */}
           <p
             className="max-w-lg text-[15px] leading-[1.75] text-stone-400"
             style={{ animationDelay: '400ms' }}
           >
-            A short description about yourself. Two or three sentences that
-            capture who you are, what you do, and what drives you. Keep it
-            genuine and direct.
+            {tr.heroDescription}
           </p>
         </section>
 
         {/* Divider */}
         <div className="hairline my-16" />
 
-        {/* About / Background */}
+        {/* About */}
         <section className="reveal" style={{ animationDelay: '150ms' }}>
           <p className="mb-5 text-[10px] tracking-[0.35em] text-stone-600 uppercase">
-            About
+            {tr.aboutLabel}
           </p>
           <div className="space-y-4 text-[15px] leading-[1.8] text-stone-400">
-            <p>
-              Write a longer bio here. Share your background, what you've built,
-              and what you're working on now. Let your voice come through — this
-              is the section where people decide they want to know more.
-            </p>
-            <p>
-              Second paragraph if you need it. Talk about your approach to work,
-              your values, or something that makes you different from everyone
-              else.
-            </p>
+            <p>{tr.aboutParagraph1}</p>
+            <p>{tr.aboutParagraph2}</p>
           </div>
         </section>
 
@@ -81,18 +104,18 @@ function Portfolio() {
         {/* Contact */}
         <section className="reveal" style={{ animationDelay: '200ms' }}>
           <p className="mb-5 text-[10px] tracking-[0.35em] text-stone-600 uppercase">
-            Contact
+            {tr.contactLabel}
           </p>
 
           <div className="space-y-3">
             <a
-              href="mailto:your.email@example.com"
+              href={`mailto:${tr.contactEmail}`}
               className="group inline-flex items-baseline gap-2 text-[15px] text-stone-300 transition-colors duration-200 hover:text-warm"
             >
               <span className="font-display text-xl italic text-warm/60">
                 →
               </span>
-              your.email@example.com
+              {tr.contactEmail}
             </a>
           </div>
 
@@ -103,7 +126,7 @@ function Portfolio() {
               rel="noreferrer"
               className="text-[13px] tracking-[0.15em] text-stone-500 uppercase transition-colors duration-200 hover:text-warm"
             >
-              GitHub
+              {tr.linkGithub}
             </a>
             <a
               href="https://linkedin.com"
@@ -111,7 +134,7 @@ function Portfolio() {
               rel="noreferrer"
               className="text-[13px] tracking-[0.15em] text-stone-500 uppercase transition-colors duration-200 hover:text-warm"
             >
-              LinkedIn
+              {tr.linkLinkedin}
             </a>
             <a
               href="https://twitter.com"
@@ -119,7 +142,7 @@ function Portfolio() {
               rel="noreferrer"
               className="text-[13px] tracking-[0.15em] text-stone-500 uppercase transition-colors duration-200 hover:text-warm"
             >
-              X
+              {tr.linkX}
             </a>
           </div>
         </section>
@@ -127,9 +150,15 @@ function Portfolio() {
         {/* Footer mark */}
         <div className="hairline my-16" />
 
-        <footer className="reveal text-[11px] text-stone-600" style={{ animationDelay: '250ms' }}>
+        <footer
+          className="reveal text-[11px] text-stone-600"
+          style={{ animationDelay: '250ms' }}
+        >
           <p className="tracking-[0.15em] uppercase">
-            © {new Date().getFullYear()} Your Name
+            {tr.footerCopyright.replace(
+              '{year}',
+              new Date().getFullYear().toString(),
+            )}
           </p>
         </footer>
       </main>
