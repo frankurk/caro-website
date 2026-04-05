@@ -4,6 +4,9 @@ import { locales, t } from '#/i18n'
 import { setPrerenderLocale } from '#/routes/__root'
 import LocaleSwitcher from '#/components/LocaleSwitcher'
 
+const name = 'Francisca Caro'
+const email = 'francisca@caro.cl'
+
 export const Route = createFileRoute('/{-$locale}/')({
   beforeLoad: ({ params }) => {
     const locale = (params.locale || 'en') as Locale
@@ -20,7 +23,7 @@ export const Route = createFileRoute('/{-$locale}/')({
       meta: [
         { charSet: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { title: `${tr.heroName} — Portfolio` },
+        { title: `${name} — ${tr.portfolioLabel}` },
         { name: 'description', content: tr.heroDescription.slice(0, 150) },
       ],
       htmlAttrs: { lang: locale },
@@ -32,7 +35,7 @@ export const Route = createFileRoute('/{-$locale}/')({
 
 function Portfolio() {
   const { locale } = Route.useRouteContext()
-  const tr = t(locale)
+  const tr = t(locale as Locale)
 
   return (
     <div className="relative min-h-screen">
@@ -66,7 +69,7 @@ function Portfolio() {
               className="font-display text-5xl font-light leading-[1.05] tracking-tight text-stone-100 sm:text-7xl"
               style={{ animationDelay: '200ms' }}
             >
-              {tr.heroName}
+              {name}
             </h1>
             <p
               className="mt-3 text-base font-medium text-warm"
@@ -109,13 +112,13 @@ function Portfolio() {
 
           <div className="space-y-3">
             <a
-              href={`mailto:${tr.contactEmail}`}
+              href={`mailto:${email}`}
               className="group inline-flex items-baseline gap-2 text-[15px] text-stone-300 transition-colors duration-200 hover:text-warm"
             >
               <span className="font-display text-xl italic text-warm/60">
                 →
               </span>
-              {tr.contactEmail}
+              {email}
             </a>
           </div>
 
@@ -126,7 +129,7 @@ function Portfolio() {
               rel="noreferrer"
               className="text-[13px] tracking-[0.15em] text-stone-500 uppercase transition-colors duration-200 hover:text-warm"
             >
-              {tr.linkGithub}
+              GitHub
             </a>
             <a
               href="https://linkedin.com"
@@ -134,7 +137,7 @@ function Portfolio() {
               rel="noreferrer"
               className="text-[13px] tracking-[0.15em] text-stone-500 uppercase transition-colors duration-200 hover:text-warm"
             >
-              {tr.linkLinkedin}
+              LinkedIn
             </a>
             <a
               href="https://twitter.com"
@@ -142,7 +145,7 @@ function Portfolio() {
               rel="noreferrer"
               className="text-[13px] tracking-[0.15em] text-stone-500 uppercase transition-colors duration-200 hover:text-warm"
             >
-              {tr.linkX}
+              X
             </a>
           </div>
         </section>
@@ -155,10 +158,7 @@ function Portfolio() {
           style={{ animationDelay: '250ms' }}
         >
           <p className="tracking-[0.15em] uppercase">
-            {tr.footerCopyright.replace(
-              '{year}',
-              new Date().getFullYear().toString(),
-            )}
+            © {new Date().getFullYear()} {name}
           </p>
         </footer>
       </main>
