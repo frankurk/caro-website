@@ -6,7 +6,6 @@ export interface Translations {
   portfolioLabel: string
   heroOccupation: string
   heroDescription: string
-  photoPlaceholder: string
   aboutLabel: string
   aboutParagraph1: string
   aboutParagraph2: string
@@ -15,43 +14,40 @@ export interface Translations {
 
 const en: Translations = {
   portfolioLabel: 'Portfolio',
-  heroOccupation: 'Creative Developer',
+  heroOccupation: 'Software Engineer',
   heroDescription:
-    'A short description about yourself. Two or three sentences that capture who you are, what you do, and what drives you. Keep it genuine and direct.',
-  photoPlaceholder: 'Photo',
-  aboutLabel: 'About',
+    'Software Developer based in Santiago, Chile. Currently working at Mercado Libre as Software Engineer.',
+  aboutLabel: 'About me',
   aboutParagraph1:
-    "Write a longer bio here. Share your background, what you've built, and what you're working on now. Let your voice come through — this is the section where people decide they want to know more.",
+    'I am a technology enthusiast dedicated to creating flawless digital experiences. I firmly believe that the magic is in the details; therefore, I immerse myself in every phase of development to ensure quality results that amaze.',
   aboutParagraph2:
-    'Second paragraph if you need it. Talk about your approach to work, your values, or something that makes you different from everyone else.',
+    'I am motivated by teamwork and challenges that push me to expand my professional horizons.',
   contactLabel: 'Contact',
 }
 
 const es: Translations = {
   portfolioLabel: 'Portafolio',
-  heroOccupation: 'Desarrolladora Creativa',
+  heroOccupation: 'Software Engineer',
   heroDescription:
-    'Una breve descripción sobre ti. Dos o tres frases que capturen quién eres, qué haces y qué te motiva. Manténlo genuino y directo.',
-  photoPlaceholder: 'Foto',
+    'Desarrolladora de software con sede en Santiago, Chile. Actualmente trabajando en Mercado Libre como Software Engineer.',
   aboutLabel: 'Sobre mí',
   aboutParagraph1:
-    'Escribe una biografía más extensa aquí. Comparte tu trayectoria, lo que has construido y en qué estás trabajando ahora. Deja que tu voz se note.',
+    'Soy una entusiasta de la tecnología dedicada a crear experiencias digitales impecables. Creo firmemente que la magia está en los detalles; por eso, me sumerjo en cada fase del desarrollo para garantizar resultados de calidad que sorprendan.',
   aboutParagraph2:
-    'Un segundo párrafo si lo necesitas. Habla sobre tu enfoque del trabajo, tus valores o algo que te diferencia de los demás.',
+    'Me motiva el trabajo en equipo y los retos que me obligan a expandir mis horizontes profesionales.',
   contactLabel: 'Contacto',
 }
 
 const de: Translations = {
   portfolioLabel: 'Portfolio',
-  heroOccupation: 'Kreative Entwicklerin',
+  heroOccupation: 'Software Engineer',
   heroDescription:
-    'Eine kurze Beschreibung über dich. Zwei oder drei Sätze, die einfangen, wer du bist, was du tust und was dich antreibt. Authentisch und direkt.',
-  photoPlaceholder: 'Foto',
+    'Softwareentwicklerin mit Sitz in Santiago, Chile. Derzeit tätig bei Mercado Libre als Software Engineer.',
   aboutLabel: 'Über mich',
   aboutParagraph1:
-    'Schreibe hier eine längere Biografie. Teile deinen Hintergrund, was du aufgebaut hast und woran du gerade arbeitest. Lass deine Stimme durchkommen.',
+    'Ich bin eine Technik-Enthusiastin, die sich der Schaffung makelloser digitaler Erlebnisse widmet. Ich glaube fest daran, dass die Magie im Detail liegt; deshalb vertiefe ich mich in jede Entwicklungsphase, um hochwertige Ergebnisse zu garantieren, die begeistern.',
   aboutParagraph2:
-    'Ein zweiter Absatz, falls benötigt. Sprich über deinen Arbeitsansatz, deine Werte oder etwas, das dich von anderen unterscheidet.',
+    'Mich motivieren Teamarbeit und Herausforderungen, die mich dazu bringen, meinen beruflichen Horizont zu erweitern.',
   contactLabel: 'Kontakt',
 }
 

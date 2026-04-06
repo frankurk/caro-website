@@ -6,6 +6,8 @@ import LocaleSwitcher from '#/components/LocaleSwitcher'
 
 const name = 'Francisca Caro'
 const email = 'francisca@caro.cl'
+const github = 'https://github.com/frankurk'
+const linkedin = 'https://www.linkedin.com/in/frankurk'
 
 export const Route = createFileRoute('/{-$locale}/')({
   beforeLoad: ({ params }) => {
@@ -51,11 +53,11 @@ function Portfolio() {
         {/* Hero */}
         <section className="reveal">
           <div className="mb-14 flex justify-center sm:mb-16 sm:justify-start">
-            <div className="photo-glow relative h-52 w-52 overflow-hidden rounded-sm sm:h-64 sm:w-64">
-              <div className="flex h-full w-full items-center justify-center bg-stone-900 text-[11px] tracking-[0.25em] text-stone-600 uppercase">
-                {tr.photoPlaceholder}
-              </div>
-            </div>
+            <img
+              src="/avatar.jpg"
+              alt={name}
+              className="photo-glow h-52 w-52 object-cover rounded-sm sm:h-64 sm:w-64"
+            />
           </div>
 
           <div className="mb-10">
@@ -124,7 +126,7 @@ function Portfolio() {
 
           <div className="mt-8 flex items-center gap-6">
             <a
-              href="https://github.com"
+              href={github}
               target="_blank"
               rel="noreferrer"
               className="text-[13px] tracking-[0.15em] text-stone-500 uppercase transition-colors duration-200 hover:text-warm"
@@ -132,20 +134,12 @@ function Portfolio() {
               GitHub
             </a>
             <a
-              href="https://linkedin.com"
+              href={linkedin}
               target="_blank"
               rel="noreferrer"
               className="text-[13px] tracking-[0.15em] text-stone-500 uppercase transition-colors duration-200 hover:text-warm"
             >
               LinkedIn
-            </a>
-            <a
-              href="https://twitter.com"
-              target="_blank"
-              rel="noreferrer"
-              className="text-[13px] tracking-[0.15em] text-stone-500 uppercase transition-colors duration-200 hover:text-warm"
-            >
-              X
             </a>
           </div>
         </section>
