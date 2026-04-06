@@ -37,7 +37,7 @@ export const Route = createFileRoute('/{-$locale}/')({
 
 function Portfolio() {
   const { locale } = Route.useRouteContext()
-  const tr = t(locale as Locale)
+  const tr = t(locale)
 
   return (
     <div className="relative min-h-screen">
