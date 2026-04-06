@@ -29,7 +29,7 @@ const es: Translations = {
   portfolioLabel: 'Portafolio',
   heroOccupation: 'Software Engineer',
   heroDescription:
-    'Desarrolladora de software con sede en Santiago, Chile. Actualmente trabajando en Mercado Libre como Software Engineer.',
+    'Desarrolladora de software ubicada en Santiago, Chile. Actualmente trabajando en Mercado Libre como Software Engineer.',
   aboutLabel: 'Sobre mí',
   aboutParagraph1:
     'Soy una entusiasta de la tecnología dedicada a crear experiencias digitales impecables. Creo firmemente que la magia está en los detalles; por eso, me sumerjo en cada fase del desarrollo para garantizar resultados de calidad que sorprendan.',
